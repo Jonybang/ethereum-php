@@ -39,73 +39,59 @@ class TransactionInfo
         $this->s = $response['s'];
     }
 
-    public function blockHash(): BlockHash
-    {
+    public function blockHash(){
         return $this->blockHash;
     }
 
-    public function blockNumber(): int
-    {
+    public function blockNumber(){
         return $this->blockNumber;
     }
 
-    public function from(): Address
-    {
+    public function from()  {
         return $this->from;
     }
 
-    public function to(): ?Address
-    {
+    public function to() {
         return $this->to;
     }
 
-    public function gas(): int
-    {
+    public function gas() {
         return $this->gas;
     }
 
-    public function gasPrice(): Wei
-    {
+    public function gasPrice() {
         return $this->gasPrice;
     }
 
-    public function hash(): TransactionHash
-    {
+    public function hash() {
         return $this->hash;
     }
 
-    public function input(): string
-    {
+    public function input() {
         return $this->input;
     }
 
-    public function nonce(): int
-    {
+    public function nonce() {
         return $this->nonce;
     }
 
-    public function transactionIndex(): int
-    {
+    public function transactionIndex() {
         return $this->transactionIndex;
     }
 
-    public function value(): Wei
-    {
+    public function value() {
         return $this->value;
     }
 
-    public function v(): string
-    {
+    public function v() {
         return $this->v;
     }
 
-    public function r(): string
-    {
+    public function r() {
         return $this->r;
     }
 
-    public function s(): string
-    {
+    public function s(){
         return $this->s;
     }
 }

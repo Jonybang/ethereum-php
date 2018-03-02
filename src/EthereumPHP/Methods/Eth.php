@@ -14,8 +14,7 @@ use EthereumPHP\Types\Wei;
 
 class Eth extends AbstractMethods
 {
-    public function protocolVersion(): string
-    {
+    public function protocolVersion() {
         $response = $this->client->send(
             $this->client->request(67, 'eth_protocolVersion', [])
         );
@@ -37,8 +36,7 @@ class Eth extends AbstractMethods
         return $result; // TODO: test this
     }
 
-    public function coinbase(): ?Address
-    {
+    public function coinbase(){
         $response = $this->client->send(
             $this->client->request(64, 'eth_coinbase', [])
         );
@@ -46,8 +44,7 @@ class Eth extends AbstractMethods
         return ($response->getRpcResult()) ? new Address($response->getRpcResult()) : null;
     }
 
-    public function mining(): bool
-    {
+    public function mining() {
         $response = $this->client->send(
             $this->client->request(71, 'eth_mining', [])
         );
@@ -56,8 +53,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function hashRate(): int
-    {
+    public function hashRate() {
         $response = $this->client->send(
             $this->client->request(71, 'eth_hashrate', [])
         );
@@ -65,8 +61,7 @@ class Eth extends AbstractMethods
         return hexdec($response->getRpcResult());
     }
 
-    public function gasPrice(): Wei
-    {
+    public function gasPrice() {
         $response = $this->client->send(
             $this->client->request(73, 'eth_gasPrice', [])
         );
@@ -77,8 +72,7 @@ class Eth extends AbstractMethods
     /**
      * @return Address[]
      */
-    public function accounts(): array
-    {
+    public function accounts() {
         $response = $this->client->send(
             $this->client->request(1, 'eth_accounts', [])
         );
@@ -91,8 +85,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function blockNumber(): int
-    {
+    public function blockNumber() {
         $response = $this->client->send(
             $this->client->request(83, 'eth_blockNumber', [])
         );
@@ -100,8 +93,7 @@ class Eth extends AbstractMethods
         return hexdec($response->getRpcResult());
     }
 
-    public function getBalance(Address $address, BlockNumber $blockNumber): Wei
-    {
+    public function getBalance(Address $address, BlockNumber $blockNumber) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBalance', [$address->toString(), $blockNumber->toString()])
         );
@@ -110,8 +102,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getStorageAt(Address $address, int $quantity, BlockNumber $blockNumber): string
-    {
+    public function getStorageAt(Address $address, $quantity, BlockNumber $blockNumber) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getStorageAt', [$address->toString(), $quantity, $blockNumber->toString()])
         );
@@ -119,8 +110,7 @@ class Eth extends AbstractMethods
         return $response->getRpcResult();
     }
 
-    public function getTransactionCount(Address $address, BlockNumber $blockNumber): int
-    {
+    public function getTransactionCount(Address $address, BlockNumber $blockNumber) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_blockNumber', [$address->toString(), $blockNumber->toString()])
         );
@@ -128,8 +118,7 @@ class Eth extends AbstractMethods
         return hexdec($response->getRpcResult());
     }
 
-    public function getBlockTransactionCountByHash(BlockHash $hash): int
-    {
+    public function getBlockTransactionCountByHash(BlockHash $hash) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBlockTransactionCountByHash', [$hash->toString()])
         );
@@ -138,8 +127,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getBlockTransactionCountByNumber(BlockNumber $blockNumber): int
-    {
+    public function getBlockTransactionCountByNumber(BlockNumber $blockNumber) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBlockTransactionCountByNumber', [$blockNumber->toString()])
         );
@@ -148,8 +136,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getUncleCountByBlockHash(BlockHash $hash): int
-    {
+    public function getUncleCountByBlockHash(BlockHash $hash) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getUncleCountByBlockHash', [$hash->toString()])
         );
@@ -158,8 +145,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getUncleCountByBlockNumber(BlockNumber $blockNumber): int
-    {
+    public function getUncleCountByBlockNumber(BlockNumber $blockNumber) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getUncleCountByBlockNumber', [$blockNumber->toString()])
         );
@@ -178,7 +164,7 @@ class Eth extends AbstractMethods
     }
 
     // the address to sign with must be unlocked
-    public function sign(Address $address, string $msgToSign)
+    public function sign(Address $address, $msgToSign)
     {
         $response = $this->client->send(
             $this->client->request(1, 'eth_sign', [$address->toString(), $msgToSign])
@@ -187,8 +173,7 @@ class Eth extends AbstractMethods
         return $response->getRpcResult();
     }
 
-    public function sendTransaction(Transaction $transaction): TransactionHash
-    {
+    public function sendTransaction(Transaction $transaction) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_sendTransaction', [$transaction->toArray()])
         );
@@ -197,8 +182,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function sendRawTransaction(string $data): TransactionHash
-    {
+    public function sendRawTransaction($data) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_sendRawTransaction', [$data])
         );
@@ -207,8 +191,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function call(Transaction $transaction, BlockNumber $blockNumber): string
-    {
+    public function call(Transaction $transaction, BlockNumber $blockNumber) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_call', [$transaction->toArray(), $blockNumber->toString()])
         );
@@ -216,8 +199,7 @@ class Eth extends AbstractMethods
         return $response->getRpcResult();
     }
 
-    public function estimateGas(Transaction $transaction, BlockNumber $blockNumber): int
-    {
+    public function estimateGas(Transaction $transaction, BlockNumber $blockNumber) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_estimateGas', [$transaction->toArray(), $blockNumber->toString()])
         );
@@ -226,8 +208,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getBlockByHash(BlockHash $hash, bool $expandTransactions = false): ?Block
-    {
+    public function getBlockByHash(BlockHash $hash, $expandTransactions = false) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBlockByHash', [$hash->toString(), $expandTransactions])
         );
@@ -236,8 +217,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getBlockByNumber(BlockNumber $blockNumber, bool $expandTransactions = false): ?Block
-    {
+    public function getBlockByNumber(BlockNumber $blockNumber, bool $expandTransactions = false) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBlockByNumber', [$blockNumber->toString(), $expandTransactions])
         );
@@ -246,8 +226,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getTransactionByHash(TransactionHash $hash): ?TransactionInfo
-    {
+    public function getTransactionByHash(TransactionHash $hash) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getTransactionByHash', [$hash->toString()])
         );
@@ -255,8 +234,7 @@ class Eth extends AbstractMethods
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;
     }
 
-    public function getTransactionByBlockHashAndIndex(BlockHash $hash, int $index): ?TransactionInfo
-    {
+    public function getTransactionByBlockHashAndIndex(BlockHash $hash, $index) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getTransactionByBlockHashAndIndex', [$hash->toString(), '0x'.dechex($index)])
         );
@@ -264,8 +242,7 @@ class Eth extends AbstractMethods
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;
     }
 
-    public function getTransactionByBlockNumberAndIndex(BlockNumber $blockNumber, int $index): ?TransactionInfo
-    {
+    public function getTransactionByBlockNumberAndIndex(BlockNumber $blockNumber, $index) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getTransactionByBlockNumberAndIndex',
                 [$blockNumber->toString(), '0x'.dechex($index)])
@@ -275,8 +252,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getTransactionReceipt(TransactionHash $hash): ?TransactionReceipt
-    {
+    public function getTransactionReceipt(TransactionHash $hash) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getTransactionReceipt', [$hash->toString()])
         );
@@ -285,8 +261,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getUncleByBlockHashAndIndex(BlockHash $hash, int $index): ?Block
-    {
+    public function getUncleByBlockHashAndIndex(BlockHash $hash, $index) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getUncleByBlockHashAndIndex', [$hash->toString(), $index])
         );
@@ -295,8 +270,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getUncleByBlockNumberAndIndex(BlockNumber $blockNumber, int $index): ?Block
-    {
+    public function getUncleByBlockNumberAndIndex(BlockNumber $blockNumber, $index) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getUncleByBlockNumberAndIndex', [$blockNumber->toString(), $index])
         );
@@ -305,8 +279,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getCompilers(): array
-    {
+    public function getCompilers() {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getCompilers', [])
         );
@@ -315,8 +288,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function compileSolidity(string $code): array
-    {
+    public function compileSolidity($code) {
         $response = $this->client->send(
             $this->client->request(1, 'eth_compileSolidity', [$code])
         );

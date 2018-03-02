@@ -55,103 +55,83 @@ class Block
         }
     }
 
-    public function difficulty(): float
-    {
+    public function difficulty() {
         return $this->difficulty;
     }
 
-    public function extraData(): string
-    {
+    public function extraData() {
         return $this->extraData;
     }
 
-    public function gasLimit(): int
-    {
+    public function gasLimit() {
         return $this->gasLimit;
     }
 
-    public function gasUsed(): Wei
-    {
+    public function gasUsed() {
         return $this->gasUsed;
     }
 
-    public function hash(): BlockHash
-    {
+    public function hash() {
         return $this->hash;
     }
 
-    public function logsBloom(): string
-    {
+    public function logsBloom() {
         return $this->logsBloom;
     }
 
-    public function miner(): Address
-    {
+    public function miner() {
         return $this->miner;
     }
 
-    public function mixHash(): Hash
-    {
+    public function mixHash() {
         return $this->mixHash;
     }
 
-    public function nonce(): string
-    {
+    public function nonce() {
         return $this->nonce;
     }
 
-    public function number(): int
-    {
+    public function number() {
         return $this->number;
     }
 
-    public function parentHash(): BlockHash
-    {
+    public function parentHash() {
         return $this->parentHash;
     }
 
-    public function receiptsRoot(): Hash
-    {
+    public function receiptsRoot() {
         return $this->receiptsRoot;
     }
 
-    public function sha3Uncles(): Hash
-    {
+    public function sha3Uncles() {
         return $this->sha3Uncles;
     }
 
-    public function size(): int
-    {
+    public function size() {
         return $this->size;
     }
 
-    public function stateRoot(): Hash
-    {
+    public function stateRoot() {
         return $this->stateRoot;
     }
 
-    public function timestamp(): int
-    {
+    public function timestamp() {
         return $this->timestamp;
     }
 
-    public function totalDifficulty(): float
-    {
+    public function totalDifficulty() {
         return $this->totalDifficulty;
     }
 
-    public function transactionsRoot(): TransactionHash
-    {
+    public function transactionsRoot() {
         return $this->transactionsRoot;
     }
 
-    public function transactions(): array
-    {
+    public function transactions() {
         return $this->transactions;
     }
 
-    public function uncles(): array
-    {
+    public function uncles() {
         return $this->uncles;
     }
 }

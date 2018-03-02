@@ -4,8 +4,7 @@ namespace EthereumPHP\Methods;
 
 class Shh extends AbstractMethods
 {
-    public function version(): string
-    {
+    public function version() {
         $response = $this->client->send(
             $this->client->request(67, 'shh_version', [])
         );

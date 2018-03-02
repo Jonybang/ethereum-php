@@ -14,7 +14,7 @@ class EthereumClient
     private $client;
     private $methods = [];
 
-    public function __construct(string $url)
+    public function __construct($url)
     {
         $this->client = Client::factory($url);
         $this->methods = [
@@ -26,28 +26,23 @@ class EthereumClient
         ];
     }
 
-    public function net(): Net
-    {
+    public function net() {
         return $this->methods['net'];
     }
 
-    public function web3(): Web3
-    {
+    public function web3() {
         return $this->methods['web3'];
     }
 
-    public function shh(): Shh
-    {
+    public function shh() {
         return $this->methods['shh'];
     }
 
-    public function eth(): Eth
-    {
+    public function eth() {
         return $this->methods['eth'];
     }
 
-    public function personal(): Personal
-    {
+    public function personal() {
         return $this->methods['personal'];
     }
 }

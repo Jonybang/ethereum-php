@@ -30,8 +30,7 @@ class Transaction
         $this->nonce = $nonce;
     }
 
-    public function toArray(): array
-    {
+    public function toArray() {
         $transaction = [
             'from' => $this->from->toString(),
             'to' => $this->to->toString(),

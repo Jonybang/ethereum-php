@@ -6,18 +6,16 @@ class Wei
 {
     private $amount;
 
-    public function __construct(float $amount)
+    public function __construct($amount)
     {
         $this->amount = $amount;
     }
 
-    public function amount(): float
-    {
+    public function amount() {
         return $this->amount;
     }
 
-    public function toEther(): float
-    {
+    public function toEther() {
         return $this->amount / 1000000000000000000;
     }
 

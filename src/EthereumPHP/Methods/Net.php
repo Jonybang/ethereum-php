@@ -4,8 +4,7 @@ namespace EthereumPHP\Methods;
 
 class Net extends AbstractMethods
 {
-    public function version(): string
-    {
+    public function version() {
         $response = $this->client->send(
             $this->client->request(67, 'net_version', [])
         );
@@ -13,8 +12,7 @@ class Net extends AbstractMethods
         return $response->getRpcResult();
     }
 
-    public function listening(): bool
-    {
+    public function listening() {
         $response = $this->client->send(
             $this->client->request(67, 'net_listening', [])
         );
@@ -22,8 +20,7 @@ class Net extends AbstractMethods
         return (bool)$response->getRpcResult();
     }
 
-    public function peerCount(): int
-    {
+    public function peerCount() {
         $response = $this->client->send(
             $this->client->request(67, 'net_listening', [])
         );

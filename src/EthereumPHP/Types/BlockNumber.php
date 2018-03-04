@@ -6,7 +6,7 @@ class BlockNumber
 {
     private $tag;
 
-    public function __construct(string $tag = 'latest')
+    public function __construct($tag = 'latest')
     {
         if (is_numeric($tag)) {
             $tag = '0x'.dechex($tag);

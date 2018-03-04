@@ -15,11 +15,11 @@ class Transaction
     public function __construct(
         Address $from,
         Address $to,
-        string $data = null,
-        int $gas = null,
+        $data = null,
+        $gas = null,
         Wei $gasPrice = null,
-        int $value = null,
-        int $nonce = null
+        $value = null,
+        $nonce = null
     ) {
         $this->from = $from;
         $this->to = $to;

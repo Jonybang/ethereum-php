@@ -6,7 +6,7 @@ class Address
 {
     private $address;
 
-    public function __construct(string $address)
+    public function __construct($address)
     {
         if (strlen($address) !== 42) {
             throw new \LengthException($address.' is not valid.');

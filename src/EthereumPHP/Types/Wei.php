@@ -21,6 +21,6 @@ class Wei
 
     public function __toString()
     {
-        return (string)$this->amount;
+        return $this->amount;
     }
 }

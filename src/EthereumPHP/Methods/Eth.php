@@ -110,9 +110,9 @@ class Eth extends AbstractMethods
         return $response->getRpcResult();
     }
 
-    public function getTransactionCount(Address $address, BlockNumber $blockNumber) {
+    public function getTransactionCount(Address $address) {
         $response = $this->client->send(
-            $this->client->request(1, 'eth_blockNumber', [$address->toString(), $blockNumber->toString()])
+            $this->client->request(1, 'eth_getTransactionCount', [$address->toString(), 'latest'])
         );
 
         return hexdec($response->getRpcResult());

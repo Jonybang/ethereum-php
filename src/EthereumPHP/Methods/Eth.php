@@ -178,8 +178,11 @@ class Eth extends AbstractMethods
             $this->client->request(1, 'eth_sendTransaction', [$transaction->toArray()])
         );
 
-        return new TransactionHash($response->getRpcResult());
-
+        try {
+            return new TransactionHash($response->getRpcResult());
+        } catch (\LengthException $exception){
+            return new \ErrorException($response->getRpcResult());
+        }
     }
 
     public function sendRawTransaction($data) {

@@ -181,7 +181,7 @@ class Eth extends AbstractMethods
         try {
             return new TransactionHash($response->getRpcResult());
         } catch (\LengthException $exception){
-            throw new \ErrorException($response->getRpcErrorCode() . ": " . $response);
+            throw new \ErrorException($response->getRpcErrorCode() . ": " . $response->getRpcErrorMessage());
         }
     }
 

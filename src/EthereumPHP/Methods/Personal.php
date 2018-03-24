@@ -35,7 +35,7 @@ class Personal extends AbstractMethods
         return new Address($response->getRpcResult());
     }
 
-    public function unlockAccount(Address $address, $password, $duration) {
+    public function unlockAccount(Address $address, $password, $duration = null) {
         $response = $this->client->send(
             $this->client->request(67, 'personal_unlockAccount', [$address->toString(), $password, $duration])
         );
